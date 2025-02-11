@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrity Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Celebrity Search Results</h1>
+        <input type="text" id="searchInput" placeholder="Enter celebrity name">
+        <button onclick="searchCelebrity()">Search</button>
+
+        <div id="results">
+            <h2>Person Name:</h2>
+            <p id="person"></p>
+
+            <h2>Date of Birth:</h2>
+            <p id="dob"></p>
+
+            <h2>Major Events:</h2>
+            <p id="description"></p>
+        </div>
+    </div>
+
+    <script>
+        function searchCelebrity() {
+            const name = document.getElementById('searchInput').value;
+            
+            fetch('/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('person').innerText = data.person;
+                document.getElementById('dob').innerText = data.dob;
+                document.getElementById('description').innerText = data.description;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
