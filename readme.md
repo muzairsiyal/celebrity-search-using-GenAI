@@ -1,7 +1,6 @@
-<h1>Celebrity Search Project<h1>
+<h1>Celebrity Search Project</h1>
 
-<p>This is a Flask-based web application that allows users to search for celebrities and get relevant information <p> 
-including: 
+<p>This is a Flask-based web application that allows users to search for celebrities and get relevant information including:  </p> 
 ✅ Basic details about the celebrity 
 ✅ Date of birth 
 ✅ Major world events around their birth year  
